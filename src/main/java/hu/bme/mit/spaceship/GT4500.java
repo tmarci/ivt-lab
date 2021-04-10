@@ -1,8 +1,8 @@
 package hu.bme.mit.spaceship;
 
 /**
-* A simple spaceship with two proton torpedo stores and four lasers
-*/
+ * A simple spaceship with two proton torpedo stores and four lasers
+ */
 public class GT4500 implements SpaceShip {
 
   private TorpedoStore primaryTorpedoStore;
@@ -78,8 +78,14 @@ public class GT4500 implements SpaceShip {
 
       case ALL:
         // try to fire both of the torpedo stores
-        //TODO implement feature
+        boolean firingPrimarySuccess = false;
+        boolean firingSecondarySuccess = false;
+        if (! primaryTorpedoStore.isEmpty())
+          firingPrimarySuccess = primaryTorpedoStore.fire(1);
+        if (! primaryTorpedoStore.isEmpty())
+          firingSecondarySuccess = secondaryTorpedoStore.fire(1);
 
+        firingSuccess = firingPrimarySuccess || firingSecondarySuccess;
         break;
     }
 
